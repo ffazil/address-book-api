@@ -4,8 +4,10 @@ import com.tracebucket.moo.domain.Contact;
 import com.tracebucket.moo.service.IContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -25,7 +27,7 @@ public class ContactController {
 
     @RequestMapping(value = "/contact/{contact_id}", method = RequestMethod.GET)
     @ResponseBody
-    public Contact fineOne(@PathVariable("contact_id") Long id){
+    public Contact fineOne(@PathVariable("contact_id") BigInteger id){
         return contactService.findOne(id);
     }
 
@@ -43,7 +45,7 @@ public class ContactController {
 
     @RequestMapping(value = "/contact/{contact_id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public Boolean delete(@PathVariable("contact_id") Long id){
+    public Boolean delete(@PathVariable("contact_id") BigInteger id){
         return contactService.delete(id);
     }
 

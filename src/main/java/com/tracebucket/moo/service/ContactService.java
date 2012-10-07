@@ -3,12 +3,16 @@ package com.tracebucket.moo.service;
 import com.tracebucket.moo.domain.Contact;
 import com.tracebucket.moo.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
  * @author FFL
  */
+@Service("contactService")
 public class ContactService implements IContactService {
 
     @Autowired
@@ -20,7 +24,7 @@ public class ContactService implements IContactService {
     }
 
     @Override
-    public Contact findOne(Long id) {
+    public Contact findOne(BigInteger id) {
         return contactRepository.findOne(id);
     }
 
@@ -35,7 +39,7 @@ public class ContactService implements IContactService {
     }
 
     @Override
-    public Boolean delete(Long id) {
+    public Boolean delete(BigInteger id) {
         Boolean status = false;
         contactRepository.delete(id);
         if(contactRepository.findOne(id) == null)

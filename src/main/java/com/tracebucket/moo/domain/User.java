@@ -4,13 +4,15 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigInteger;
+
 /**
  * @author FFL
  */
 @Document
 public class User {
     @Id
-    private Long id;
+    private BigInteger id;
     @Indexed
     private String username;
     private String password;
@@ -24,11 +26,11 @@ public class User {
         this.password = password;
     }
 
-    public Long getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
